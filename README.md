@@ -8,7 +8,7 @@
 ```
 (inside cros sdk)
 (cr) git clone <this project> ~/github/chromium_os-rk3399
-(cr) git clone https://github.com/openFyde/overlay-rpi4-openfyde
+(cr) git clone https://github.com/openFyde/overlay-rockpi4b-openfyde
 (cr) cd ~/trunk/src/overlays/
 (cr) ln -s ~/github/chromium_os-rk3399/chipset-rk3399-openfyde .
 (cr) ln -s ~/github/chromium_os-rk3399/baseboard-rockpi4 .
