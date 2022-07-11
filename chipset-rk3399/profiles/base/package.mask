@@ -1,0 +1,4 @@
+sys-kernel/chromeos-kernel-5_4::chromiumos
+sys-kernel/chromeos-kernel-5_4::openfyde-patches
+sys-kernel/linux-firmware::openfyde-patches
+chromeos-base/cros-disks::openfyde-patches
