@@ -3,7 +3,7 @@
 
 EAPI=7
 CROS_WORKON_REPO="https://github.com/FydeOS-for-You-overlays"
-CROS_WORKON_COMMIT="f7d3fc6be5b808ff335ff78a589a8b599845a11f"
+CROS_WORKON_COMMIT="0c4bf81db8316f1fcf617c146231e8fe94960ae0"
 CROS_WORKON_EGIT_BRANCH="rock-pi4"
 
 CROS_WORKON_PROJECT="kernel-rockchip"
@@ -58,12 +58,12 @@ default rockchip-${kernel_release}-debug
 label rockchip-${kernel_release}-debug
     kernel /boot/Image-${kernel_release}
     devicetreedir /boot/dtbs/${kernel_release}
-    append earlyprintk console=ttyS2,1500000n8 ro root=/dev/\${bootdevice}p\${bootdevice_part} rootfstype=ext4 init=/sbin/init rootwait cros_debug loglevel=7 dm_verity.error_behavior=3 dm_verity.max_bios=-1 dm_verity.dev_wait=0 dm="1 vroot none ro 1, 0 2539520 verity payload=/dev/\${bootdevice}p\${bootdevice_part} hashtree=HASH_DEV hashstart=2539520 alg=sha1 root_hexdigest=a1910fbe4a24a30d19a49b85d2889776251e54e3 salt=c520b38f1057e5bef0aa64c00cd0d2e50662e22bf19771278921f90a35fd616d" vt.global_cursor_default=0 ethaddr=\${ethaddr} serial=\${serial#} cgroup.memory=nokmem cros_legacy panic=0
+    append earlyprintk console=ttyS2,1500000n8 ro root=/dev/\${bootdevice}p\${bootdevice_part} rootfstype=ext4 init=/sbin/init rootwait cros_debug loglevel=7 dm_verity.error_behavior=3 dm_verity.max_bios=-1 dm_verity.dev_wait=0 dm="1 vroot none ro 1, 0 2539520 verity payload=/dev/\${bootdevice}p\${bootdevice_part} hashtree=HASH_DEV hashstart=2539520 alg=sha1 root_hexdigest=a1910fbe4a24a30d19a49b85d2889776251e54e3 salt=c520b38f1057e5bef0aa64c00cd0d2e50662e22bf19771278921f90a35fd616d" vt.global_cursor_default=0 ethaddr=\${ethaddr} serial=\${serial#} cgroup.memory=nokmem cros_legacy panic=0 cma=1024M
 
 label rockchip-${kernel_release}
     kernel /boot/Image-${kernel_release}
     devicetreedir /boot/dtbs/${kernel_release}
-    append earlyprintk console=ttyS2,1500000n8 ro root=/dev/\${bootdevice}p\${bootdevice_part} rootfstype=ext4 init=/sbin/init rootwait loglevel=7 dm_verity.error_behavior=3 dm_verity.max_bios=-1 dm_verity.dev_wait=0 dm="1 vroot none ro 1,0 2539520 verity payload=/dev/\${bootdevice}p\${bootdevice_part} hashtree=HASH_DEV hashstart=2539520 alg=sha1 root_hexdigest=a1910fbe4a24a30d19a49b85d2889776251e54e3 salt=c520b38f1057e5bef0aa64c00cd0d2e50662e22bf19771278921f90a35fd616d" vt.global_cursor_default=0 ethaddr=\${ethaddr} serial=\${serial#} cgroup.memory=nokmem cros_legacy panic=0
+    append earlyprintk console=ttyS2,1500000n8 ro root=/dev/\${bootdevice}p\${bootdevice_part} rootfstype=ext4 init=/sbin/init rootwait loglevel=7 dm_verity.error_behavior=3 dm_verity.max_bios=-1 dm_verity.dev_wait=0 dm="1 vroot none ro 1,0 2539520 verity payload=/dev/\${bootdevice}p\${bootdevice_part} hashtree=HASH_DEV hashstart=2539520 alg=sha1 root_hexdigest=a1910fbe4a24a30d19a49b85d2889776251e54e3 salt=c520b38f1057e5bef0aa64c00cd0d2e50662e22bf19771278921f90a35fd616d" vt.global_cursor_default=0 ethaddr=\${ethaddr} serial=\${serial#} cgroup.memory=nokmem cros_legacy panic=0 cma=1024M
 EOF
 
   insinto "/boot/extlinux"
