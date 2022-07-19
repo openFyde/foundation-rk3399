@@ -1,5 +1,4 @@
 net-wireless/bluez bt_deprecated_tools
-chromeos-base/chromeos-chrome chrome_media
 sys-apps/gptfdisk -ncurses
+chromeos-base/chromeos-chrome chrome_media
 chromeos-base/cryptohome -direncription_allow_v2
-chromeos-base/chromeos-chrome goma_thinlto v4lplugin

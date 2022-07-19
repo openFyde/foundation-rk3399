@@ -1,3 +1,2 @@
-#chromiumos:default/linux/arm/10.0/chromeos
+baseboard-gru:base
 chipset-rk3399-openfyde:base
-#openfyde:base
