@@ -1,3 +1,6 @@
+# Copyright (c) 2022 Fyde Innovations Limited and the openFyde Authors.
+# Distributed under the license specified in the root directory of this project.
+
 # Copyright 2021 The Chromium OS Authors. All rights reserved.
 # Distributed under the terms of the GNU General Public License v2
 
@@ -39,18 +42,26 @@ RDEPEND="
 	sys-block/parted
 "
 
+src_prepare() {
+	cros-rust_src_prepare
+
+	eapply -p2 "${FILESDIR}/0001-add-args-for-chromeos-install-to-make-it-work-on-pi.patch"
+	eapply -p2 "${FILESDIR}/0002-remove-os_install_service-seccomp-policy-for-minijail.patch"
+	eapply_user
+}
+
 src_install() {
-	# insinto /etc/dbus-1/system.d
-	# doins conf/org.chromium.OsInstallService.conf
-	#
+	insinto /etc/dbus-1/system.d
+	doins conf/org.chromium.OsInstallService.conf
+
 	# insinto /usr/share/policy
 	# newins "conf/os_install_service-seccomp-${ARCH}.policy" os_install_service-seccomp.policy
-	#
-	# insinto /etc/init
-	# doins conf/os_install_service.conf
-	#
-	# newtmpfiles conf/tmpfiles.conf os_install_service.conf
+
+	insinto /etc/init
+	doins conf/os_install_service.conf
+
+	newtmpfiles conf/tmpfiles.conf os_install_service.conf
 
 	dosbin "$(cros-rust_get_build_dir)/is_running_from_installer"
-	# dosbin "$(cros-rust_get_build_dir)/os_install_service"
+	dosbin "$(cros-rust_get_build_dir)/os_install_service"
 }
