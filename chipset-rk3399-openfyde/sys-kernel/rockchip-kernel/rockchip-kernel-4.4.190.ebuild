@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-CROS_WORKON_REPO="https://github.com/damenly"
-CROS_WORKON_COMMIT="15286251c7ab078f2353339ebe4f3ab10ab7bd86"
-CROS_WORKON_EGIT_BRANCH="new-keyz"
+CROS_WORKON_REPO="https://github.com/FydeOS-for-You-overlays"
+CROS_WORKON_COMMIT="0c4bf81db8316f1fcf617c146231e8fe94960ae0"
+CROS_WORKON_EGIT_BRANCH="rock-pi4"
 
-CROS_WORKON_PROJECT="linux"
+CROS_WORKON_PROJECT="kernel-rockchip"
 CROS_WORKON_LOCALNAME="/kernel/rockchip-kernel"
 CROS_WORKON_INCREMENTAL_BUILD="1"
 
