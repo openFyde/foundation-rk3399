@@ -1,3 +1,4 @@
 chromeos-base/vm_host_tools::chromiumos
 chromeos-base/cros-disks::chromiumos
 chromeos-base/chromeos-installer::chromiumos
+chromeos-base/tty::chromiumos

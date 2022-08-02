@@ -24,6 +24,7 @@ ALL_PORTS=(
 	ttySAC{0..5}
 	ttyUSB{0..5}
 	tty{0..5}
+	ttyFIQ{0..5}
 )
 
 IUSE_PORTS="${ALL_PORTS[@]/#/${USE_PREFIX}}"
