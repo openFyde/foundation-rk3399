@@ -38,6 +38,9 @@ src_install() {
   insinto "/etc/bluetooth"
   doins "${FILESDIR}"/bluetooth/*
 
+  insinto "/etc/init"
+  doins ${FILESDIR}/powerd/never-suspend.conf
+
   # Install audio config files
   local audio_config_dir="${FILESDIR}/audio-config"
   install_audio_configs kevin "${audio_config_dir}"
