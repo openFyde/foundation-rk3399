@@ -3,32 +3,42 @@
 
 EAPI="5"
 
-CROS_WORKON_COMMIT="e592947074e36fbc03bb19710e363c5d078a589f"
-CROS_WORKON_TREE=("d897a7a44e07236268904e1df7f983871c1e1258" "cc7b0a6134501820bdc41dd9b1536f4986c6f9a9" "76048c384ed9eba7cdd5dc5c3e0b853baac8802d" "e7dba8c91c1f3257c34d4a7ffff0ea2537aeb6bb")
+CROS_WORKON_COMMIT="473eeaa9bfc2a4cf8c4e941f6008d7e6eae1981e"
+CROS_WORKON_TREE=("29d2f0fcd2444371bf2152eb9ffc9904ade26fea" "2345346c6533c29d4e3ee84bc2bf53306247256c" "2812efc1457e820286be16017773d21b5891a4c3" "6fc4c6b35e5c71304e6fed40a7a24e6401d38df3" "e7dba8c91c1f3257c34d4a7ffff0ea2537aeb6bb")
 CROS_WORKON_PROJECT="chromiumos/platform2"
 CROS_WORKON_LOCALNAME="platform2"
 CROS_WORKON_INCREMENTAL_BUILD=1
 CROS_WORKON_OUTOFTREE_BUILD=1
 # TODO(crbug.com/809389): Avoid directly including headers from other packages.
-CROS_WORKON_SUBTREE="common-mk installer verity .gn"
+CROS_WORKON_SUBTREE="chromeos-config common-mk installer verity .gn"
 
 PLATFORM_SUBDIR="installer"
 
 inherit cros-workon platform systemd
 
 DESCRIPTION="Chrome OS Installer"
-HOMEPAGE="https://chromium.googlesource.com/chromiumos/platform2/+/master/installer/"
+HOMEPAGE="https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/installer/"
 SRC_URI=""
 
 LICENSE="BSD-Google"
 SLOT="0"
 KEYWORDS="*"
-IUSE="cros_embedded enable_slow_boot_notify -mtd pam systemd lvm_stateful_partition"
+IUSE="
+	cros_embedded
+	enable_slow_boot_notify
+	-mtd
+	pam
+	systemd
+	lvm_stateful_partition
+	postinstall_config_efi_and_legacy
+	manage_efi_boot_entries
+"
 
 COMMON_DEPEND="
 	chromeos-base/libbrillo:=
 	chromeos-base/vboot_reference
 	chromeos-base/verity
+	manage_efi_boot_entries? ( chromeos-base/chromeos-config sys-libs/efivar )
 "
 
 DEPEND="${COMMON_DEPEND}
@@ -60,6 +70,9 @@ src_install() {
 
 	# Enable lvm stateful partition.
 	if use lvm_stateful_partition; then
+		# We are replacing expansions in a shell file, and shellcheck thinks we want
+		# to expand those in this context. Ignore it.
+		# shellcheck disable=SC2016
 		sed -i '/DEFINE_boolean lvm_stateful "/s:\${FLAGS_FALSE}:\${FLAGS_TRUE}:' \
 			"${D}/usr/sbin/chromeos-install" ||
 			die "Failed to set 'lvm_stateful' in chromeos-install"

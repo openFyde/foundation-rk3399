@@ -8,25 +8,35 @@ CROS_WORKON_LOCALNAME="platform2"
 CROS_WORKON_INCREMENTAL_BUILD=1
 CROS_WORKON_OUTOFTREE_BUILD=1
 # TODO(crbug.com/809389): Avoid directly including headers from other packages.
-CROS_WORKON_SUBTREE="common-mk installer verity .gn"
+CROS_WORKON_SUBTREE="chromeos-config common-mk installer verity .gn"
 
 PLATFORM_SUBDIR="installer"
 
 inherit cros-workon platform systemd
 
 DESCRIPTION="Chrome OS Installer"
-HOMEPAGE="https://chromium.googlesource.com/chromiumos/platform2/+/master/installer/"
+HOMEPAGE="https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/installer/"
 SRC_URI=""
 
 LICENSE="BSD-Google"
 SLOT="0"
 KEYWORDS="~*"
-IUSE="cros_embedded enable_slow_boot_notify -mtd pam systemd lvm_stateful_partition"
+IUSE="
+	cros_embedded
+	enable_slow_boot_notify
+	-mtd
+	pam
+	systemd
+	lvm_stateful_partition
+	postinstall_config_efi_and_legacy
+	manage_efi_boot_entries
+"
 
 COMMON_DEPEND="
 	chromeos-base/libbrillo:=
 	chromeos-base/vboot_reference
 	chromeos-base/verity
+	manage_efi_boot_entries? ( chromeos-base/chromeos-config sys-libs/efivar )
 "
 
 DEPEND="${COMMON_DEPEND}
@@ -58,6 +68,9 @@ src_install() {
 
 	# Enable lvm stateful partition.
 	if use lvm_stateful_partition; then
+		# We are replacing expansions in a shell file, and shellcheck thinks we want
+		# to expand those in this context. Ignore it.
+		# shellcheck disable=SC2016
 		sed -i '/DEFINE_boolean lvm_stateful "/s:\${FLAGS_FALSE}:\${FLAGS_TRUE}:' \
 			"${D}/usr/sbin/chromeos-install" ||
 			die "Failed to set 'lvm_stateful' in chromeos-install"
