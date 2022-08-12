@@ -10,8 +10,10 @@ CROS_WORKON_INCREMENTAL_BUILD=1
 
 PLATFORM2_PATHS=(
 	common-mk
+	featured
 	metrics
 	.gn
+	sirenia
 
 	vm_tools/BUILD.gn
 	vm_tools/host
@@ -39,13 +41,13 @@ PLATFORM_SUBDIR="vm_tools"
 inherit tmpfiles cros-workon platform udev user arc-build-constants
 
 DESCRIPTION="VM host tools for Chrome OS"
-HOMEPAGE="https://chromium.googlesource.com/chromiumos/platform2/+/master/vm_tools"
+HOMEPAGE="https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools"
 
 LICENSE="BSD-Google"
 KEYWORDS="~*"
 # The crosvm-wl-dmabuf and crosvm-virtio-video USE flags
 # are used when preprocessing concierge source.
-IUSE="+kvm_host +seccomp +crosvm-wl-dmabuf fuzzer wilco +crosvm-virtio-video vulkan"
+IUSE="+kvm_host +seccomp +crosvm-wl-dmabuf fuzzer wilco +crosvm-virtio-video vulkan libglvnd crosvm_siblings"
 REQUIRED_USE="kvm_host"
 
 COMMON_DEPEND="
@@ -68,6 +70,8 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	chromeos-base/dlcservice-client:=
+	chromeos-base/featured:=
+	chromeos-base/manatee-client:=
 	chromeos-base/shill-client:=
 	chromeos-base/system_api:=[fuzzer?]
 	chromeos-base/vm_protos:=

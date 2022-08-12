@@ -1,7 +1,7 @@
-diff --git a/vm_tools/init/vm_concierge.conf b/vm_tools/init/vm_concierge.conf
+diff --git a/init/vm_concierge.conf b/init/vm_concierge.conf
 index 3a6cb856b6..e85196f12e 100644
---- a/vm_tools/init/vm_concierge.conf
-+++ b/vm_tools/init/vm_concierge.conf
+--- a/init/vm_concierge.conf
++++ b/init/vm_concierge.conf
 @@ -11,7 +11,7 @@ author         "chromium-os-dev@chromium.org"
  start on start-user-session
  stop on stopping ui
