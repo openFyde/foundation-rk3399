@@ -3,10 +3,10 @@
 
 EAPI=5
 
-CROS_WORKON_REPO="https://github.com/ayufan-rock64"
+CROS_WORKON_REPO="https://gitee.com/openFyde"
 CROS_WORKON_COMMIT="eeab15eccd3efdb64d09ca30ca0225dcf72a28da"
 CROS_WORKON_MANUAL_UPREV="1"
-CROS_WORKON_PROJECT="linux-package"
+CROS_WORKON_PROJECT="ayufan-rock64-linux-package"
 
 EGIT_MASTER="master"
 
