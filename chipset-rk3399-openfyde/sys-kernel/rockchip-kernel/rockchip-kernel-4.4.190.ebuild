@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-CROS_WORKON_REPO="https://github.com/FydeOS-for-You-overlays"
+CROS_WORKON_REPO="https://gerrit.openfyde.cn/FydeOS-for-You-overlays"
 CROS_WORKON_COMMIT="ec36e83761b9593fc407fdf7fc3dbb1dcbcbbe35"
 CROS_WORKON_EGIT_BRANCH="rock-pi4"
 
