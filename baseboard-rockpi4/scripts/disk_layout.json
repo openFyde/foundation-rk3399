@@ -17,12 +17,14 @@
       },
       {
         "num": 5,
+        "fs_format": "ext4",
         "size": "2724 MiB"
       },
       {
         "num": 3,
         # caculate: size = fs_size / 64  + 200 (M)
         "fs_size":"2484 MiB",
+        "fs_format": "ext4",
         "size":"2724 MiB"
       }
     ],
@@ -31,10 +33,12 @@
         # Slot B rootfs, unused on USB, but pad to 2M.
         # installation will expand this to size from base.
         "num": 5,
+        "fs_format": "ext4",
         "size": "2 MiB"
       },
       {
         "num": 3,
+        "fs_format": "ext4",
         "fs_size":"2700 MiB",
         "size": "2724 MiB"
       }
@@ -42,6 +46,7 @@
     "factory_install": [
       {
         "num": 3,
+        "fs_format": "ext4",
         "fs_size":"2484 MiB",
         "size":"2724 MiB"
       }
