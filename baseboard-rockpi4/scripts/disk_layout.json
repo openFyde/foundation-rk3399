@@ -22,9 +22,9 @@
       },
       {
         "num": 3,
+        "fs_format": "ext4",
         # caculate: size = fs_size / 64  + 200 (M)
         "fs_size":"2484 MiB",
-        "fs_format": "ext4",
         "size":"2724 MiB"
       }
     ],
@@ -39,7 +39,7 @@
       {
         "num": 3,
         "fs_format": "ext4",
-        "fs_size":"2700 MiB",
+        "fs_size":"2484 MiB",
         "size": "2724 MiB"
       }
     ],
