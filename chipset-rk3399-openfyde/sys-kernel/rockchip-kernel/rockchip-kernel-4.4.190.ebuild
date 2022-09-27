@@ -3,7 +3,7 @@
 
 EAPI=7
 CROS_WORKON_REPO="https://github.com/FydeOS-for-You-overlays"
-CROS_WORKON_COMMIT="0c4bf81db8316f1fcf617c146231e8fe94960ae0"
+CROS_WORKON_COMMIT="ec36e83761b9593fc407fdf7fc3dbb1dcbcbbe35"
 CROS_WORKON_EGIT_BRANCH="rock-pi4"
 
 CROS_WORKON_PROJECT="kernel-rockchip"
